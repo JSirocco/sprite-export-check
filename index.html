@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-l+AqI+aOu8j8GyP4wqlfWMGbJ1/YlcqolLKtmg7i/hI=' 'sha256-bCbMtXhvPhjx1MSb6vOHDOoJId5YwGpk219ARqNRt2s='; style-src 'sha256-rwdE1ZOVEHL97asOJCUfRavRlzchT+bO1mbI7DQOJjs='; img-src 'self' blob: data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Sprite export check — local prototype</title>
+<style>:root{color-scheme:light;--ink:#202b28;--muted:#59645f;--paper:#f4f3ec;--line:#d9ddd3;--accent:#d6f171;--error:#a42f26;--warn:#86620a}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}header{max-width:1400px;margin:auto;padding:25px 40px;display:flex;justify-content:space-between;border-bottom:1px solid var(--line)}a{color:inherit}.wordmark{text-decoration:none;font-weight:750;letter-spacing:-.4px}.local{font-size:12px;color:#386847;background:#e6ecdf;padding:4px 12px;border-radius:20px}main{max-width:1400px;margin:auto;padding:42px 40px 20px}.intro{position:relative;max-width:780px;margin-bottom:36px}.eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:750;color:var(--muted);margin:0 0 18px}h1{font-size:clamp(42px,5.2vw,70px);letter-spacing:-3px;line-height:1.02;margin:0 0 22px;font-weight:650}.lead{font-size:17px;max-width:660px;color:#46534c;margin-bottom:10px}.privacy{font-size:12px;color:var(--muted)}.workbench{display:grid;grid-template-columns:300px minmax(0,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fffefa}.inputs{padding:25px;border-right:1px solid var(--line);background:#eceee5}.filebox{display:block;padding:16px;margin:12px 0;border:1px dashed #a9b3a1;border-radius:7px;font-size:13px;font-weight:650;background:#f8f9f2}.filebox span{display:block;font-size:11px;font-weight:400;color:var(--muted);margin:4px 0 12px}input{font:11px system-ui;width:100%;color:#36483b}input::file-selector-button{border:0;padding:6px;border-radius:4px;background:#e0e5d7;color:var(--ink);margin-right:8px}button{font:600 12px system-ui;cursor:pointer;border:1px solid #cbd2c4;background:#fffefa;color:var(--ink);border-radius:6px;padding:10px 12px}button:hover{background:#e9eddf}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #446823;outline-offset:3px}.primary{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--accent);width:100%;padding:13px;margin-top:17px}.primary:hover{background:#344c3d}.small{font-size:11px;color:var(--muted)}.examples{display:flex;gap:6px;margin:20px 0}.examples button{font-size:11px;flex:1;padding:9px 5px}details{font-size:11px;color:#506047;border-top:1px solid #cbd2c4;padding-top:16px;margin-top:22px}summary{cursor:pointer;color:var(--ink);font-weight:650}.results{padding:25px;min-width:0}.result-top{display:flex;align-items:start;justify-content:space-between;gap:16px}.result-top button{font-size:10px;padding:7px 10px}#summary{margin:8px 0 19px}.status-heading{font-size:21px;letter-spacing:-.7px;font-weight:700;margin:0 0 9px}.stats{display:flex;gap:7px;flex-wrap:wrap}.pill{font-size:10px;padding:4px 8px;border-radius:4px;background:#eef0e8;color:#485544}.pill.error{background:#fae8e3;color:var(--error)}.pill.warning{background:#fff2cf;color:var(--warn)}.pill.unchecked{background:#e7edf4;color:#38557b}.preview{background:#202e29;border-radius:7px;overflow:hidden;margin-bottom:20px}.preview canvas{width:100%;height:190px;display:block;image-rendering:pixelated}.preview p{color:#c6d0c5;padding:9px 12px;margin:0;font-size:10px;border-top:1px solid #3a4840}.issue{padding:13px 0;border-bottom:1px solid #e4e6dd;display:grid;grid-template-columns:74px minmax(0,1fr);gap:10px}.issue .severity{font-size:10px;font-weight:750;color:var(--error);text-transform:uppercase}.issue.warning .severity{color:var(--warn)}.issue.unchecked .severity{color:#38557b}.issue strong{font-size:12px;display:block;overflow-wrap:anywhere}.issue p{font-size:12px;color:var(--muted);margin:3px 0;overflow-wrap:anywhere}.empty{font-size:13px;color:#345e3d;background:#edf4e4;padding:16px;border-radius:6px}#frame-list{display:flex;gap:5px;flex-wrap:wrap;margin-top:17px}#frame-list button{font-size:10px;padding:6px 9px;max-width:200px;overflow-wrap:anywhere;text-align:left}#frame-list button.selected{background:var(--accent);border-color:#8ba946}footer{display:flex;justify-content:space-between;gap:20px;font-size:10px;color:var(--muted);padding:22px 0}@media(min-width:1100px){.workbench{margin-top:-85px;margin-left:420px;grid-template-columns:250px minmax(0,1fr)}.intro{max-width:360px;position:absolute;margin-top:50px}.lead{font-size:16px}.privacy{max-width:280px}.workbench{margin-top:10px}.results{padding:22px}.inputs{padding:22px}main{padding-top:36px}.preview canvas{height:170px}}@media(max-width:800px){main{padding:28px 16px}header{padding:18px 16px}.workbench{grid-template-columns:1fr}.inputs{border-right:0;border-bottom:1px solid var(--line)}h1{letter-spacing:-2px}.results{padding:18px}footer{flex-direction:column}.intro{max-width:600px}}
+#report-panel{margin-top:22px;border-top:1px solid var(--line);padding-top:18px}#report-panel label{font-size:12px;font-weight:650}#report-text{display:block;width:100%;margin:10px 0;font:11px/1.5 monospace;border:1px solid var(--line);border-radius:5px;padding:12px;resize:vertical;background:#f4f5ee;color:var(--ink)}#report-link{font-size:12px}
+</style>
+
+</head>
+<body>
+<header><a href="#main" class="wordmark">▦ sprite export check</a><span class="local">● Local processing</span></header>
+<main id="main">
+<section class="intro"><p class="eyebrow">A SMALL CHECK BEFORE A LONG DEBUGGING SESSION</p><h1>Is the export<br>actually ready?</h1><p class="lead">Check an Aseprite PNG + JSON pair for broken frame bounds, duplicate names, invalid timing and animation tag ranges.</p><p class="privacy">Your files stay in this browser. No account. No API calls. No changes to originals.</p></section>
+<section class="workbench" aria-label="Export checker">
+<div class="inputs"><p class="eyebrow">01 / CHOOSE AN EXPORT</p>
+<label class="filebox" for="json">Animation metadata <span>JSON array or hash · up to 5 MB</span><input id="json" type="file" accept=".json,application/json"></label>
+<label class="filebox" for="png">Texture image <span>PNG · up to 20 MB / 16 megapixels</span><input id="png" type="file" accept=".png,image/png"></label>
+<button class="primary" id="check">Check my export <span>↗</span></button>
+<p id="file-status" class="small" role="status">Or try a deliberately broken example first.</p>
+<div class="examples"><button id="broken">Broken example</button><button id="healthy">Healthy example</button></div>
+<details><summary>What this prototype checks</summary><p>Aseprite JSON-array / JSON-hash exports with unrotated PNG frames. It checks declared dimensions, frame rectangles, filename collisions, positive durations, trim geometry and tag index ranges.</p><p>Rotated frames and slice metadata are marked as unchecked. Duplicate keys inside JSON objects, missing external files beyond the selected PNG, animation direction semantics and in-engine rendering are not validated. A clean result is not an engine compatibility certificate.</p></details>
+</div>
+<div class="results"><div class="result-top"><p class="eyebrow">02 / INSPECT THE RESULT</p><button id="download" disabled>View report ↓</button></div>
+<div id="summary" aria-live="polite"></div>
+<div class="preview"><canvas id="canvas" width="768" height="320" aria-label="Selected PNG preview with frame boundaries"></canvas><p id="preview-label" class="small"></p></div>
+<div id="issues"></div><div id="frame-list" aria-label="Frames"></div>
+<section id="report-panel" hidden><label for="report-text">JSON report — select and copy, or download</label><textarea id="report-text" readonly rows="12" spellcheck="false"></textarea><a id="report-link" download="sprite-export-report.json">Download JSON report ↓</a></section>
+</div>
+</section>
+<footer><span>Research prototype · not a released commercial product</span><a href="https://www.aseprite.org/docs/cli/" target="_blank" rel="noopener noreferrer">Aseprite export documentation ↗</a></footer>
+</main>
+<script>'use strict';
+
+function auditExport(text, image = null) {
+  const issues = [];
+  const add = (level, code, where, message) => issues.push({ level, code, where, message });
+  const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+  const integer = value => Number.isSafeInteger(value);
+  const positiveSize = value => object(value) && integer(value.w) && value.w > 0 && integer(value.h) && value.h > 0;
+  const rectangle = value => positiveSize(value) && integer(value.x) && value.x >= 0 && integer(value.y) && value.y >= 0;
+  const result = (frames = [], tags = []) => ({
+    format: 'Aseprite JSON array/hash · unrotated frames',
+    image: image ? { width: image.width, height: image.height, name: image.name } : null,
+    frameCount: frames.length, tagCount: tags.length, frames, issues,
+    errors: issues.filter(x => x.level === 'error').length,
+    warnings: issues.filter(x => x.level === 'warning').length,
+    unchecked: issues.filter(x => x.level === 'unchecked').length
+  });
+  if (typeof text !== 'string' || text.length > 5 * 1024 * 1024) {
+    add('error', 'JSON_LIMIT', 'File', 'Choose a JSON file smaller than 5 MB.');
+    return result();
+  }
+  let data;
+  try { data = JSON.parse(text); }
+  catch { add('error', 'JSON_SYNTAX', 'File', 'This file is not valid JSON.'); return result(); }
+  if (!object(data) || !(Array.isArray(data.frames) || object(data.frames))) {
+    add('error', 'FORMAT', 'File', 'Expected an Aseprite export with a frames array or object.');
+    return result();
+  }
+  const entries = Array.isArray(data.frames)
+    ? data.frames.map((value, index) => [object(value) ? value.filename : null, value, index])
+    : Object.entries(data.frames).map(([name, value], index) => [name, value, index]);
+  if (!entries.length || entries.length > 20000) {
+    add('error', 'FRAME_COUNT', 'Frames', 'Supported range: 1–20,000 frames.');
+    return result();
+  }
+  const meta = object(data.meta) ? data.meta : {};
+  const dimensions = positiveSize(meta.size) ? { width: meta.size.w, height: meta.size.h } : null;
+  if (meta.size !== undefined && !dimensions) add('error', 'META_SIZE', 'meta.size', 'Expected positive integer w and h.');
+  const actualImage = image && integer(image.width) && image.width > 0 && integer(image.height) && image.height > 0 ? image : null;
+  if (!actualImage) add('unchecked', 'NO_IMAGE', 'Image', 'PNG not supplied. Geometry can only be checked against declared dimensions.');
+  const bounds = actualImage || dimensions;
+  if (!bounds) add('unchecked', 'NO_BOUNDS', 'Image', 'No valid image dimensions available; frame bounds were not checked.');
+  if (actualImage && dimensions && (actualImage.width !== dimensions.width || actualImage.height !== dimensions.height)) {
+    add('error', 'IMAGE_SIZE_MISMATCH', 'meta.size', `JSON declares ${dimensions.width} × ${dimensions.height}; PNG is ${actualImage.width} × ${actualImage.height}.`);
+  }
+  if (actualImage && typeof meta.image === 'string' && typeof actualImage.name === 'string') {
+    const declared = meta.image.replaceAll('\\', '/').split('/').pop();
+    if (declared !== actualImage.name) add('warning', 'IMAGE_NAME', 'meta.image', `JSON references “${declared}”; selected PNG is “${actualImage.name}”. Confirm the deployed filename and letter case.`);
+  }
+  const names = new Map();
+  const folded = new Map();
+  const frames = [];
+  for (const [rawName, frame, index] of entries) {
+    const name = typeof rawName === 'string' && rawName.trim() ? rawName : `Frame ${index}`;
+    const where = `${index}: ${name}`;
+    if (typeof rawName !== 'string' || !rawName.trim()) add('error', 'FRAME_NAME', where, 'Frame filename must be a non-empty string.');
+    else {
+      if (names.has(name)) add('error', 'DUPLICATE_NAME', where, `Same filename as frame ${names.get(name)}.`);
+      else names.set(name, index);
+      const key = name.toLowerCase();
+      if (folded.has(key) && folded.get(key) !== name) add('warning', 'CASE_COLLISION', where, `Filename differs only in letter case from “${folded.get(key)}”.`);
+      else folded.set(key, name);
+    }
+    if (!object(frame)) {
+      add('error', 'FRAME_OBJECT', where, 'Frame entry must be an object.');
+      frames.push({ index, name, rect: null, rotated: false, duration: null });
+      continue;
+    }
+    const rect = frame.frame;
+    const validRect = rectangle(rect);
+    if (!validRect) add('error', 'FRAME_RECT', where, 'Frame x/y must be non-negative integers; w/h must be positive integers.');
+    if (frame.rotated !== undefined && typeof frame.rotated !== 'boolean') add('error', 'ROTATED_TYPE', where, 'rotated must be true or false.');
+    if (frame.trimmed !== undefined && typeof frame.trimmed !== 'boolean') add('error', 'TRIMMED_TYPE', where, 'trimmed must be true or false.');
+    const rotated = frame.rotated === true;
+    if (rotated) add('unchecked', 'ROTATED_UNSUPPORTED', where, 'Rotated packing is outside this prototype. Geometry for this frame was not checked.');
+    if (validRect && bounds && !rotated && (rect.x + rect.w > bounds.width || rect.y + rect.h > bounds.height)) {
+      add('error', 'OUT_OF_BOUNDS', where, `Frame ends at (${rect.x + rect.w}, ${rect.y + rect.h}), beyond ${bounds.width} × ${bounds.height}.`);
+    }
+    if (typeof frame.duration !== 'number' || !Number.isFinite(frame.duration) || frame.duration <= 0) {
+      add('error', 'DURATION', where, 'Expected a positive duration in milliseconds.');
+    }
+    if (!rotated && frame.trimmed === true) {
+      if (!positiveSize(frame.sourceSize) || !rectangle(frame.spriteSourceSize)) {
+        add('error', 'TRIM_DATA', where, 'Trimmed frames require valid sourceSize and spriteSourceSize.');
+      } else {
+        const trim = frame.spriteSourceSize;
+        if (trim.x + trim.w > frame.sourceSize.w || trim.y + trim.h > frame.sourceSize.h) add('error', 'TRIM_BOUNDS', where, 'Trimmed region extends outside the original source canvas.');
+        if (validRect && (trim.w !== rect.w || trim.h !== rect.h)) add('error', 'TRIM_SIZE', where, 'Unrotated frame and spriteSourceSize have different dimensions.');
+      }
+    }
+    frames.push({ index, name, rect: validRect ? rect : null, rotated, duration: frame.duration });
+  }
+  let tags = [];
+  if (meta.frameTags !== undefined && !Array.isArray(meta.frameTags)) add('error', 'TAG_LIST', 'meta.frameTags', 'Expected an array of animation tags.');
+  if (Array.isArray(meta.frameTags)) {
+    if (meta.frameTags.length > 20000) add('error', 'TAG_LIMIT', 'meta.frameTags', 'At most 20,000 tags are supported.');
+    else {
+      tags = meta.frameTags;
+      const tagNames = new Set();
+      tags.forEach((tag, i) => {
+        const where = `Tag ${i}`;
+        if (!object(tag)) { add('error', 'TAG_OBJECT', where, 'Tag must be an object.'); return; }
+        if (typeof tag.name !== 'string' || !tag.name.trim()) add('error', 'TAG_NAME', where, 'Tag name must be non-empty.');
+        else if (tagNames.has(tag.name)) add('warning', 'DUPLICATE_TAG', tag.name, 'Another tag has the same name; some importers may replace it.');
+        else tagNames.add(tag.name);
+        if (!integer(tag.from) || !integer(tag.to) || tag.from < 0 || tag.to < tag.from || tag.to >= entries.length) {
+          add('error', 'TAG_RANGE', tag.name || where, `Expected 0 ≤ from ≤ to < ${entries.length}.`);
+        }
+      });
+    }
+  }
+  // shortcut: this is a structural preflight, not a full engine/format conformance test.
+  if (Array.isArray(meta.slices) && meta.slices.length) add('unchecked', 'SLICES_UNCHECKED', 'meta.slices', 'Slice data is preserved in your original file, but is not validated here.');
+  return result(frames, tags);
+}
+
+if (typeof module !== 'undefined') module.exports = { auditExport };
+</script><script>'use strict';
+
+const $ = id => document.getElementById(id);
+let report = null;
+let picture = null;
+let selected = 0;
+let revision = 0;
+let reportUrl = null;
+const canvas = $('canvas');
+const ctx = canvas.getContext('2d');
+
+function element(tag, text, className) {
+  const node = document.createElement(tag);
+  if (text !== undefined) node.textContent = text;
+  if (className) node.className = className;
+  return node;
+}
+
+function draw() {
+  ctx.fillStyle = '#202e29'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  if (!picture || !report) return;
+  const scale = Math.min((canvas.width - 60) / picture.width, (canvas.height - 40) / picture.height);
+  const x = (canvas.width - picture.width * scale) / 2;
+  const y = (canvas.height - picture.height * scale) / 2;
+  ctx.save(); ctx.translate(x, y); ctx.scale(scale, scale); ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = '#33433a'; ctx.fillRect(0, 0, picture.width, picture.height);
+  ctx.drawImage(picture, 0, 0);
+  for (const frame of report.frames.slice(0, 1000)) {
+    if (!frame.rect || frame.rotated) continue;
+    const { x: fx, y: fy, w, h } = frame.rect;
+    const invalid = fx + w > picture.width || fy + h > picture.height;
+    ctx.strokeStyle = invalid ? '#ff8c7c' : frame.index === selected ? '#dcff78' : '#829687';
+    ctx.lineWidth = (frame.index === selected ? 2.5 : 1) / scale;
+    ctx.strokeRect(fx, fy, w, h);
+  }
+  ctx.restore();
+}
+
+function show(text, imageInfo, source, label) {
+  if (reportUrl) { URL.revokeObjectURL(reportUrl); reportUrl = null; }
+  $('report-panel').hidden = true;
+  report = auditExport(text, imageInfo);
+  picture = source; selected = 0;
+  $('summary').replaceChildren(); $('issues').replaceChildren(); $('frame-list').replaceChildren();
+  let title = 'No issues in supported checks';
+  if (report.errors) title = 'This export needs attention';
+  else if (report.unchecked) title = 'Some checks are incomplete';
+  else if (report.warnings) title = 'Review these warnings';
+  $('summary').append(element('p', title, 'status-heading'));
+  const stats = element('div', undefined, 'stats');
+  for (const [text, cls] of [[`${report.frameCount} frames`, ''], [`${report.tagCount} ${report.tagCount === 1 ? 'tag' : 'tags'}`, ''], [`${report.errors} errors`, 'error'], [`${report.warnings} warnings`, 'warning'], [`${report.unchecked} unchecked`, 'unchecked']]) {
+    stats.append(element('span', text, `pill ${cls}`));
+  }
+  $('summary').append(stats);
+  for (const issue of report.issues.slice(0, 200)) {
+    const row = element('div', undefined, `issue ${issue.level}`);
+    row.append(element('span', issue.level, 'severity'));
+    const body = element('div'); body.append(element('strong', issue.where), element('p', issue.message));
+    row.append(body); $('issues').append(row);
+  }
+  if (report.issues.length > 200) $('issues').append(element('p', 'Showing the first 200 findings. Save the report for the complete list.', 'small'));
+  if (!report.issues.length) $('issues').append(element('p', 'The supported structural checks found no issues. Test the actual import in your engine before shipping.', 'empty'));
+  for (const frame of report.frames.slice(0, 40)) {
+    const button = element('button', `${frame.index} · ${frame.name}`, frame.index === selected ? 'selected' : '');
+    button.addEventListener('click', () => {
+      selected = frame.index;
+      for (const other of $('frame-list').children) other.classList.remove('selected');
+      button.classList.add('selected'); draw();
+      $('preview-label').textContent = `${label} · ${frame.name}${frame.rect ? ` · ${frame.rect.w} × ${frame.rect.h} px` : ''}${frame.rotated ? ' · rotated preview not supported' : ''}`;
+    });
+    $('frame-list').append(button);
+  }
+  if (report.frames.length > 40) $('frame-list').append(element('p', 'Preview buttons show the first 40 frames. Every supported frame is checked.', 'small'));
+  $('preview-label').textContent = `${label}${imageInfo ? ` · ${imageInfo.width} × ${imageInfo.height} px` : ' · PNG not selected'} · outlines show up to 1,000 frames`;
+  $('download').disabled = false; draw();
+}
+
+async function example(broken) {
+  const art = document.createElement('canvas'); art.width = 128; art.height = 32;
+  const c = art.getContext('2d');
+  for (let i = 0; i < 4; i++) {
+    const x = i * 32;
+    c.fillStyle = ['#d5f477', '#c3dc6c', '#acc45b', '#93aa48'][i];
+    c.fillRect(x + 9, 5, 14, 11); c.fillRect(x + 7, 16, 18, 9);
+    c.fillRect(x + 8 + i % 2 * 2, 25, 5, 4); c.fillRect(x + 20 - i % 2 * 2, 25, 5, 4);
+    c.fillStyle = '#24372d'; c.fillRect(x + 18, 9, 3, 3);
+  }
+  const frames = Array.from({ length: 4 }, (_, i) => ({ filename: `walk_${i}.png`, frame: { x: i * 32, y: 0, w: 32, h: 32 }, rotated: false, trimmed: false, duration: 100 }));
+  const data = { frames, meta: { image: 'walk.png', size: { w: 128, h: 32 }, frameTags: [{ name: 'walk', from: 0, to: 3, direction: 'forward' }] } };
+  if (broken) {
+    frames[2].filename = frames[1].filename;
+    frames[2].duration = 0;
+    frames[3].frame.x = 112;
+    data.meta.frameTags[0].to = 5;
+  }
+  const blob = await new Promise(resolve => art.toBlob(resolve, 'image/png'));
+  await analyzeFiles(new File([JSON.stringify(data)], 'walk.json', { type: 'application/json' }), new File([blob], 'walk.png', { type: 'image/png' }), broken ? 'Synthetic example · four intentional errors' : 'Synthetic example · healthy export');
+}
+
+async function analyzeFiles(json, png, label) {
+  const current = ++revision;
+  $('check').disabled = true;
+  let source = null;
+  try {
+    if (json.size > 5 * 1024 * 1024) throw new Error('JSON exceeds the 5 MB prototype limit.');
+    let imageInfo = null;
+    if (png) {
+      if (png.size > 20 * 1024 * 1024) throw new Error('PNG exceeds the 20 MB prototype limit.');
+      const header = new Uint8Array(await png.slice(0, 24).arrayBuffer());
+      if (header.length < 24 || [137, 80, 78, 71, 13, 10, 26, 10].some((v, i) => header[i] !== v) || String.fromCharCode(...header.slice(12, 16)) !== 'IHDR') throw new Error('The selected image is not a PNG.');
+      const view = new DataView(header.buffer); const width = view.getUint32(16); const height = view.getUint32(20);
+      if (!width || !height || width * height > 16 * 1024 * 1024 || width > 8192 || height > 8192) throw new Error('PNG exceeds the prototype limit: 16 megapixels and 8,192 pixels per side.');
+      source = await createImageBitmap(png);
+      imageInfo = { width: source.width, height: source.height, name: png.name };
+    }
+    const text = await json.text();
+    if (current !== revision) { if (source) source.close(); return; }
+    if (picture && typeof picture.close === 'function') picture.close();
+    show(text, imageInfo, source, label || `${json.name}${png ? ` + ${png.name}` : ''}`);
+    $('file-status').textContent = label ? 'Synthetic PNG + JSON read through the same file pipeline. Your chosen files were not read.' : 'Checked locally. Original files were not changed.';
+  } catch (error) {
+    if (source) source.close();
+    if (current !== revision) return;
+    $('file-status').textContent = `Could not check: ${error.message}`;
+    $('download').disabled = true;
+    $('report-panel').hidden = true;
+    $('summary').replaceChildren(element('p', 'Files were not checked', 'status-heading'));
+    $('issues').replaceChildren(); $('frame-list').replaceChildren(); report = null; draw();
+    $('preview-label').textContent = 'Choose supported files, then check again.';
+  } finally { if (current === revision) $('check').disabled = false; }
+}
+$('check').addEventListener('click', () => {
+  const json = $('json').files[0]; const png = $('png').files[0];
+  if (!json) { $('file-status').textContent = 'Choose the JSON metadata file first.'; $('json').focus(); return; }
+  analyzeFiles(json, png);
+});
+$('broken').addEventListener('click', () => example(true));
+$('healthy').addEventListener('click', () => example(false));
+$('download').addEventListener('click', () => {
+  if (!report) return;
+  const { frames, ...summary } = report;
+  const text = JSON.stringify({ ...summary, limitations: 'Structural preflight only. See the prototype scope. Original files are never included.' }, null, 2);
+  $('report-text').value = text;
+  if (reportUrl) URL.revokeObjectURL(reportUrl);
+  reportUrl = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+  $('report-link').href = reportUrl;
+  $('report-panel').hidden = false;
+  $('report-text').focus();
+});
+example(true);
+</script></body></html>
